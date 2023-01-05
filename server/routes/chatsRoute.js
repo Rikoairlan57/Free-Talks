@@ -22,3 +22,5 @@ router.post("/create-new-chat", authMiddleware, async (req, res) => {
     });
   }
 });
+
+module.exports = router;

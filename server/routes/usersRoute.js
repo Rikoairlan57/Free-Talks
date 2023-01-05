@@ -100,4 +100,31 @@ router.get("/get-all-users", authMiddleware, async (req, res) => {
   }
 });
 
+router.post("/update-profile-picture", authMiddleware, async (req, res) => {
+  try {
+    const image = req.body.image;
+
+    const uploadedImage = await cloudinary.uploader.upload(image, {
+      folder: "ksr",
+    });
+
+    const user = await User.findOneAndUpdate(
+      { _id: req.body.userId },
+      { profilePic: uploadedImage.secure_url },
+      { new: true }
+    );
+
+    res.send({
+      success: true,
+      message: "Profile picture updated successfully",
+      data: user,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+    });
+  }
+});
+
 module.exports = router;

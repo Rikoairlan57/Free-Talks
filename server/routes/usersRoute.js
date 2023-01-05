@@ -68,4 +68,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/get-current-user", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.body.userId });
+    res.send({
+      success: true,
+      message: "User fetched successfully",
+      data: user,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+    });
+  }
+});
+
 module.exports = router;

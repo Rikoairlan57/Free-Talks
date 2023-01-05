@@ -30,3 +30,42 @@ router.post("/register", async (req, res) => {
     });
   }
 });
+
+router.post("/login", async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      return res.send({
+        success: false,
+        message: "User does not exist",
+      });
+    }
+
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!validPassword) {
+      return res.send({
+        success: false,
+        message: "Invalid password",
+      });
+    }
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    res.send({
+      success: true,
+      message: "User logged in successfully",
+      data: token,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+    });
+  }
+});
+
+module.exports = router;

@@ -15,6 +15,9 @@
     "no-unused-vars": "off",
     "quotes": "off",
     "no-console": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "consistent-return": "off",
+    "prefer-destructuring": "off",
+    "import/newline-after-import": "off"
   }
 }

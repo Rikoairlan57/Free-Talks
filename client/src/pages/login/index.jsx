@@ -12,10 +12,18 @@ const Login = () => {
         <div className="flex justify-center items-center h-full">
           <form className="max-w-[400px] w-full mx-auto bg-white p-8">
             <h1 className="text-4xl font-bold text-blue-500">
-              Enjoy<span className="text-green-500">Discussion</span>
+              Free<span className="text-green-500">Talks</span>
             </h1>
-            <input type="text" placeholder="Enter your email" />
-            <input type="password" placeholder="Enter your password" />
+            <input
+              type="text"
+              placeholder="Enter your email"
+              className="w-full border relative bg-gray-100 p-2 my-4"
+            />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-full border relative bg-gray-100 p-2 my-4"
+            />
             <button
               type="button"
               className="w-full py-2 my-4 text-white bg-green-600 hover:bg-green-500"

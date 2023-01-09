@@ -1,3 +1,4 @@
+/* eslint-disable no-global-assign */
 const express = require("express");
 require("dotenv").config();
 const app = express();
@@ -7,11 +8,6 @@ const port = process.env.PORT || 6000;
 const usersRoute = require("./routes/usersRoute");
 const chatsRoute = require("./routes/chatsRoute");
 const messagesRoute = require("./routes/messagesRoute");
-
-app.use("/api/users", usersRoute);
-app.use("/api/chats", chatsRoute);
-app.use("/api/messages", messagesRoute);
-
 app.use(
   express.json({
     limit: "50mb",
@@ -19,5 +15,9 @@ app.use(
 );
 
 const server = require("http").createServer(app);
+
+app.use("/api/users", usersRoute);
+app.use("/api/chats", chatsRoute);
+app.use("/api/messages", messagesRoute);
 
 server.listen(port, () => console.log(`Server running on port ${port}`));

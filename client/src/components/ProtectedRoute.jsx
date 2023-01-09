@@ -50,12 +50,12 @@ const ProtectedRoute = ({ children }) => {
         <div className="flex items-center gap-1">
           <i className="ri-message-3-line text-2xl text-white"></i>
           <h1
-            className="text-white text-2xl uppercase font-bold cursor-pointer"
+            className="text-4xl font-bold text-blue-500"
             onClick={() => {
               navigate("/");
             }}
           >
-            SHEYCHAT
+            Free<span className="text-green-500">Talks</span>
           </h1>
         </div>
         <div className="flex gap-2 text-md items-center bg-white p-2 rounded">
@@ -70,7 +70,7 @@ const ProtectedRoute = ({ children }) => {
             <i class="ri-shield-user-line text-primary"></i>
           )}
           <h1
-            className="underline text-primary cursor-pointer"
+            className=" text-primary cursor-pointer"
             onClick={() => {
               navigate("/profile");
             }}

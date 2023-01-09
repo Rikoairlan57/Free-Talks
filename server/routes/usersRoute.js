@@ -7,7 +7,7 @@ const cloudinary = require("../cloudinary");
 
 router.post("/register", async (req, res) => {
   try {
-    const user = await User.find({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email });
     if (user) {
       return res.send({
         success: false,
@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
     await newUser.save();
     res.send({
       success: true,
-      message: "user created successfully",
+      message: "User created successfully",
     });
   } catch (error) {
     res.send({
@@ -99,6 +99,8 @@ router.get("/get-all-users", authMiddleware, async (req, res) => {
     });
   }
 });
+
+// update user profile picture
 
 router.post("/update-profile-picture", authMiddleware, async (req, res) => {
   try {

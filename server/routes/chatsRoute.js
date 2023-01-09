@@ -23,7 +23,7 @@ router.post("/create-new-chat", authMiddleware, async (req, res) => {
   }
 });
 
-router.get("get-all-chats", authMiddleware, async (res, req) => {
+router.get("/get-all-chats", authMiddleware, async (req, res) => {
   try {
     const chats = await Chat.find({
       members: {

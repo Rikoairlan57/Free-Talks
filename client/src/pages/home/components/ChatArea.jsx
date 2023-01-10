@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetMessages, SendMessage } from "../../../utils/messages";
@@ -120,6 +122,7 @@ function ChatArea({ socket }) {
         clearUnreadMessages();
       }
     });
+
     socket.on("unread-messages-cleared", (data) => {
       const tempAllChats = store.getState().userReducer.allChats;
       const tempSelectedChat = store.getState().userReducer.selectedChat;

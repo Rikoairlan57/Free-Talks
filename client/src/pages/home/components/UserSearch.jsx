@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserSearch = ({ searchKey, setSearchKey }) => {
+function UserSearch({ searchKey, setSearchKey }) {
   return (
     <div className="relative">
       <input
@@ -13,6 +13,6 @@ const UserSearch = ({ searchKey, setSearchKey }) => {
       <i className="ri-search-line absolute top-4 left-4 text-gray-500"></i>
     </div>
   );
-};
+}
 
 export default UserSearch;

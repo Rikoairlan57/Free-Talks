@@ -6,7 +6,7 @@ import { HideLoader, ShowLoader } from "../../redux/loaderSlice";
 import { SetUser } from "../../redux/userSlice";
 import { UpdateProfilePicture } from "../../utils/users";
 
-const Profile = () => {
+function Profile() {
   const { user } = useSelector((state) => state.userReducer);
   const [image = "", setImage] = React.useState("");
   const dispatch = useDispatch();
@@ -79,6 +79,6 @@ const Profile = () => {
       </div>
     )
   );
-};
+}
 
 export default Profile;

@@ -47,7 +47,7 @@ const Login = () => {
         <div className="flex justify-center items-center h-full">
           <form className="max-w-[400px] w-full mx-auto bg-white p-8">
             <h1 className="text-4xl font-bold text-blue-500">
-              Free<span className="text-green-500">Talks</span>
+              Free<span className="text-green-500 text-4xl ">Talks</span>
             </h1>
             <input
               type="text"

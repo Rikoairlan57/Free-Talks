@@ -8,7 +8,7 @@ import { GetAllUsers, GetCurrentUser } from "../utils/users";
 import { HideLoader, ShowLoader } from "../redux/loaderSlice";
 import { SetAllUsers, SetUser, SetAllChats } from "../redux/userSlice";
 
-const ProtectedRoute = ({ children }) => {
+function ProtectedRoute({ children }) {
   const { user } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,14 +48,13 @@ const ProtectedRoute = ({ children }) => {
     <div className="h-screen w-screen bg-gray-100 p-2">
       <div className="flex justify-between p-5 bg-primary rounded">
         <div className="flex items-center gap-1">
-          <i className="ri-message-3-line text-2xl text-white"></i>
           <h1
-            className="text-4xl font-bold text-blue-500"
+            className="text-4xl font-bold text-blue-500 cursor-pointer"
             onClick={() => {
               navigate("/");
             }}
           >
-            Free<span className="text-green-500">Talks</span>
+            Free<span className="text-green-500 text-4xl ">Talks</span>
           </h1>
         </div>
         <div className="flex gap-2 text-md items-center bg-white p-2 rounded">
@@ -70,7 +69,7 @@ const ProtectedRoute = ({ children }) => {
             <i class="ri-shield-user-line text-primary"></i>
           )}
           <h1
-            className=" text-primary cursor-pointer"
+            className="text-primary cursor-pointer"
             onClick={() => {
               navigate("/profile");
             }}
@@ -91,6 +90,6 @@ const ProtectedRoute = ({ children }) => {
       <div className="py-5">{children}</div>
     </div>
   );
-};
+}
 
 export default ProtectedRoute;

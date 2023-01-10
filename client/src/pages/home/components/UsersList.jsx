@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,6 +45,7 @@ function UsersList({ searchKey, socket, onlineUsers }) {
   };
 
   const getData = () => {
+    // if search key is empty then return all chats else return filtered chats and users
     try {
       if (searchKey === "") {
         return allChats || [];
@@ -67,11 +69,16 @@ function UsersList({ searchKey, socket, onlineUsers }) {
   const getDateInRegualarFormat = (date) => {
     let result = "";
 
+    // if date is today return time in hh:mm format
     if (moment(date).isSame(moment(), "day")) {
       result = moment(date).format("hh:mm");
-    } else if (moment(date).isSame(moment().subtract(1, "day"), "day")) {
+    }
+    // if date is yesterday return yesterday and time in hh:mm format
+    else if (moment(date).isSame(moment().subtract(1, "day"), "day")) {
       result = `Yesterday ${moment(date).format("hh:mm")}`;
-    } else if (moment(date).isSame(moment(), "year")) {
+    }
+    // if date is this year return date and time in MMM DD hh:mm format
+    else if (moment(date).isSame(moment(), "year")) {
       result = moment(date).format("MMM DD hh:mm");
     }
 
@@ -119,6 +126,7 @@ function UsersList({ searchKey, socket, onlineUsers }) {
 
   useEffect(() => {
     socket.on("receive-message", (message) => {
+      // if the chat area opened is not equal to chat in message , then increase unread messages by 1 and update last message
       const tempSelectedChat = store.getState().userReducer.selectedChat;
       let tempAllChats = store.getState().userReducer.allChats;
       if (tempSelectedChat?._id !== message.chat) {
@@ -136,6 +144,7 @@ function UsersList({ searchKey, socket, onlineUsers }) {
         tempAllChats = updatedAllChats;
       }
 
+      // always latest message chat will be on top
       const latestChat = tempAllChats.find((chat) => chat._id === message.chat);
       const otherChats = tempAllChats.filter(
         (chat) => chat._id !== message.chat

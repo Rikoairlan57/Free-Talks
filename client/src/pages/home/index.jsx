@@ -5,13 +5,12 @@ import UserSearch from "./components/UserSearch";
 import UsersList from "./components/UsersList";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000/");
+const socket = io("http://localhost:3000");
 function Home() {
   const [searchKey, setSearchKey] = React.useState("");
   const { selectedChat, user } = useSelector((state) => state.userReducer);
   const [onlineUsers, setOnlineUsers] = React.useState([]);
   useEffect(() => {
-    // join the room
     if (user) {
       socket.emit("join-room", user._id);
       socket.emit("came-online", user._id);

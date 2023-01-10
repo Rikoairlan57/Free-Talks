@@ -19,6 +19,8 @@
     "consistent-return": "off",
     "prefer-destructuring": "off",
     "import/newline-after-import": "off",
-    "no-global-assign": "off"
+    "no-global-assign": "off",
+    "import/no-useless-path-segments": "off",
+    "import/no-self-import": "off"
   }
 }

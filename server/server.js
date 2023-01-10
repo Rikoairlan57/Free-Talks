@@ -7,7 +7,6 @@ const port = process.env.PORT || 6000;
 const usersRoute = require("./routes/usersRoute");
 const chatsRoute = require("./routes/chatsRoute");
 const messagesRoute = require("./routes/messagesRoute");
-const { Socket } = require("socket.io");
 app.use(
   express.json({
     limit: "50mb",
